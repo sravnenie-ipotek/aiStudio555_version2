@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification",
+    "description": "In-app notifications for approval workflow"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "APPROVAL_REQUIRED",
+        "CONTENT_APPROVED",
+        "CONTENT_REJECTED",
+        "CHANGES_REQUESTED",
+        "SYSTEM_ALERT"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text"
+    },
+    "targetUser": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "admin::user"
+    },
+    "targetRole": {
+      "type": "string",
+      "description": "Target role (e.g., Super Admin)"
+    },
+    "relatedEntity": {
+      "type": "string",
+      "description": "Related entity type (e.g., translation)"
+    },
+    "relatedEntityId": {
+      "type": "string",
+      "description": "ID of related entity"
+    },
+    "isRead": {
+      "type": "boolean",
+      "default": false
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "actionUrl": {
+      "type": "string",
+      "description": "URL to take action on this notification"
+    }
+  }
+}

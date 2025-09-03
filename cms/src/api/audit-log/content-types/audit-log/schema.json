@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "audit_logs",
+  "info": {
+    "singularName": "audit-log",
+    "pluralName": "audit-logs",
+    "displayName": "Audit Log",
+    "description": "Track all content changes and approvals"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "action": {
+      "type": "enumeration",
+      "enum": [
+        "TRANSLATION_CREATED",
+        "TRANSLATION_UPDATED",
+        "TRANSLATION_DELETED",
+        "TRANSLATION_APPROVED",
+        "TRANSLATION_REJECTED",
+        "TRANSLATION_SUBMITTED",
+        "EMERGENCY_PUBLISH",
+        "ROLLBACK",
+        "USER_CREATED",
+        "USER_UPDATED",
+        "ROLE_CHANGED"
+      ],
+      "required": true
+    },
+    "entityType": {
+      "type": "string",
+      "required": true
+    },
+    "entityId": {
+      "type": "string",
+      "required": true
+    },
+    "entityKey": {
+      "type": "string",
+      "description": "Human-readable identifier (e.g., translation key)"
+    },
+    "performedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "admin::user"
+    },
+    "performedByName": {
+      "type": "string",
+      "description": "Name of user who performed action"
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "reason": {
+      "type": "text",
+      "description": "Reason for action (especially for rejections)"
+    },
+    "notes": {
+      "type": "text",
+      "description": "Additional notes or context"
+    },
+    "details": {
+      "type": "json",
+      "description": "Additional structured data about the action"
+    },
+    "ipAddress": {
+      "type": "string",
+      "description": "IP address of user"
+    },
+    "userAgent": {
+      "type": "text",
+      "description": "User agent string"
+    }
+  }
+}

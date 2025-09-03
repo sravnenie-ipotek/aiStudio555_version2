@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "translations",
+  "info": {
+    "singularName": "translation",
+    "pluralName": "translations",
+    "displayName": "Translation",
+    "description": "UI translations with approval workflow"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "reviewWorkflows": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "description": "Translation key (e.g., nav.home)"
+    },
+    "ru": {
+      "type": "text",
+      "description": "Russian translation"
+    },
+    "en": {
+      "type": "text",
+      "description": "English translation"
+    },
+    "he": {
+      "type": "text",
+      "description": "Hebrew translation"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "navigation",
+        "homepage",
+        "courses",
+        "common",
+        "errors",
+        "forms",
+        "auth"
+      ],
+      "default": "common"
+    },
+    "page": {
+      "type": "string",
+      "description": "Associated page (optional)"
+    },
+    "section": {
+      "type": "string",
+      "description": "Page section (optional)"
+    },
+    "description": {
+      "type": "text",
+      "description": "Context for translators"
+    },
+    "approvalStatus": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "pending_review",
+        "under_review",
+        "changes_requested",
+        "approved",
+        "published"
+      ],
+      "default": "draft",
+      "private": false
+    },
+    "submittedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "admin::user"
+    },
+    "submittedAt": {
+      "type": "datetime"
+    },
+    "reviewedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "admin::user"
+    },
+    "reviewedAt": {
+      "type": "datetime"
+    },
+    "reviewNotes": {
+      "type": "text",
+      "description": "Feedback from reviewer"
+    },
+    "version": {
+      "type": "integer",
+      "default": 1
+    }
+  }
+}
