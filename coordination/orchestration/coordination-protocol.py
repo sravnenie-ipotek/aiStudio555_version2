@@ -34,8 +34,9 @@ class TaskStatus(Enum):
 
 class AgentType(Enum):
     BLUE = "blue"      # Search & Discovery (Haiku)
-    GREEN = "green"    # Code Generation (Sonnet)
-    RED = "red"        # Critical Review (Opus)
+    GREEN = "green"    # Code Generation (Haiku)
+    RED = "red"        # Critical Review (Haiku)
+    ORANGE = "orange"  # QA & E2E Testing (Haiku)
 
 @dataclass
 class Task:

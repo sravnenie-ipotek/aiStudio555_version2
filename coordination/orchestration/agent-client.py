@@ -10,6 +10,7 @@ Usage:
   python3 agent-client.py --agent blue --check-tasks
   python3 agent-client.py --agent green --complete-task TASK_ID --result "result"
   python3 agent-client.py --agent red --heartbeat
+  python3 agent-client.py --agent orange --run-tests --project-path /path/to/project
 """
 
 import argparse
